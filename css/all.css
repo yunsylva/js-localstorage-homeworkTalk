@@ -101,13 +101,13 @@ table {
       background: #e8a874;
     }
 
-    .deleteBtn{
+    .delete{
       background-color: #fff;
       border: 1px solid;
       border-radius: 3px;
       margin-right: 10px;
       cursor: pointer;
     }
-    .deleteBtn:hover{
+    .delete:hover{
       background-color: #ddd;
     }
