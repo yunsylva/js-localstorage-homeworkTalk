@@ -1,12 +1,12 @@
 //DOM
 var sendBtn = document.querySelector('.send');
-// var deleteBtn = document.querySelector('.delete');
 var ulList = document.querySelector('.list');
 var data = JSON.parse(localStorage.getItem('todoText'))||[];
 
 //監聽"加入代辦"和"刪除"鈕
 sendBtn.addEventListener('click', addList, false);
-ulList.addEventListener('click', deleteList, false);
+ulList.addEventListener('click', deleteList, false); //監聽父元素
+//開啟網頁便渲染清單
 showList(data);
 
 //加入陣列及local storage
@@ -20,15 +20,13 @@ function addList(e) {
     }
     data.push(todoText); 
     showList(data); 
-    //將data轉為字串
-    // var todoString = JSON.stringify(data);
-    //把字串存入localStorage
-    // localStorage.setItem('todoText', todoString);
+    //將data轉為字串並存入localStorage
     localStorage.setItem('todoText', JSON.stringify(data)); 
 }
 
 //更新清單畫面
 function showList(){
+    document.querySelector('.text').value = "";
     str = "";
     data.forEach((item,index) => {
         str += `<li>
@@ -43,7 +41,7 @@ function showList(){
 function deleteList(e) {
     e.preventDefault();
     console.log(e.target);
-    if(e.target.nodeName !== 'BUTTON'){
+    if(e.target.nodeName !== 'BUTTON' && e.target.nodeName !== 'SPAN'){
         return;
     };
     var index = e.target.dataset.index;
